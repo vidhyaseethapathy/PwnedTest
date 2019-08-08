@@ -2,7 +2,8 @@ package com.haveibeenpwned.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,6 +11,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -21,10 +24,9 @@ public class Base {
     /**
      * Method to start the browser and maximize the screen
      */
-    public void startDriver() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + File.separator + "src"
-                + File.separator + "main" + File.separator + "resources" + File.separator + "chromedriver.exe");
-        driver = new ChromeDriver();
+    public void startDriver() throws MalformedURLException {
+        String host = System.getProperty("seleniumHubHost");
+        driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), new ChromeOptions());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }

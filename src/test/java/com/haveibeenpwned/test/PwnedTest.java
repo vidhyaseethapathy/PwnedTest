@@ -15,10 +15,11 @@ public class PwnedTest extends Base {
      */
     @BeforeTest
     public void startTest() {
-        startDriver();
+
         try {
+            startDriver();
             openAppURL();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
