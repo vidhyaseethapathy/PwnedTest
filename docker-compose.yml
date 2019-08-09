@@ -13,7 +13,7 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
   pwnedtest:
-    image: vidhyadocker/pwnedtest:test
+    image: vidhyaseethapathy/pwnedtest:test
     container_name: pwnedtest
     depends_on:
       - chrome
