@@ -24,7 +24,8 @@ public class Base {
     /**
      * Method to start the browser and maximize the screen
      */
-    public void startDriver() throws MalformedURLException {
+    public void startDriver() throws Exception {
+        Thread.sleep(10000);
         String host = System.getProperty("seleniumHubHost");
         driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), new ChromeOptions());
         driver.manage().window().maximize();
